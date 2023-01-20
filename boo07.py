@@ -1,3 +1,7 @@
+st.title('The relationship between the Korean economy and the US economy')
+
+
+
 
 import streamlit as st
 import pandas as pd
@@ -44,5 +48,4 @@ plt.title('House Price')
 st.pyplot(fig)
 st.dataframe(money)
 
-st.title('This is a title')
-st.title('A title with _italics_ :blue[colors] and emojis :sunglasses:')
+
