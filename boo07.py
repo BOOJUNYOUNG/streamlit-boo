@@ -1,5 +1,3 @@
-st.title('The relationship between the Korean economy and the US economy')
-
 
 
 
@@ -7,6 +5,10 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+
+
+st.title('This is a title')
+st.title('The relationship between the Korean economy and the US economy')
 
 
 money = pd.read_csv("money_data7.csv")
