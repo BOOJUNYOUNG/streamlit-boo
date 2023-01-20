@@ -43,3 +43,6 @@ plt.title('House Price')
 
 st.pyplot(fig)
 st.dataframe(money)
+
+st.title('This is a title')
+st.title('A title with _italics_ :blue[colors] and emojis :sunglasses:')
