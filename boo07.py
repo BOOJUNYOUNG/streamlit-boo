@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-st.title('This is a title')
+
 st.title('The relationship between the Korean economy and the US economy')
 
 
