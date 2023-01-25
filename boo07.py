@@ -11,6 +11,8 @@ import numpy as np
 st.title('The relationship between the Korean economy and the US economy')
 
 
+st.sidebar.success("Select a demo above.")
+
 money = pd.read_csv("money_data7.csv")
 
 
