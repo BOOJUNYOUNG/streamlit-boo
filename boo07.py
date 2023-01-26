@@ -50,7 +50,7 @@ def  plotting_demo():
 with st.form(key ='Form1'):
     with st.sidebar:
         
-        select_language = st.sidebar.radio('What do you want ?', ('line', 'bar', 'pie','histogram','corr','word','box'))
+        select_language = st.sidebar.radio('What do you want ?', ('line', 'bar', 'pie','histogram','corr','word cloud','box'))
         
         
 if select_language =='line':        
