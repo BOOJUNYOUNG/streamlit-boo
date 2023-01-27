@@ -56,7 +56,6 @@ with st.form(key ='Form1'):
         
 if select_language =='line graph':        
     try:
-          plotting_demo()  
-       
+         plotting_demo()  
     except:      
           pass     
