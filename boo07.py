@@ -49,6 +49,7 @@ def  plotting_demo():
     st.dataframe(money)
     
 def bar_chart():
+   
     url = "https://sports.news.naver.com/kbaseball/record/index?category=kbo&year="
 
     years = ['2015', '2016','2017', '2018', '2019', '2020', '2021', '2022']
@@ -72,7 +73,7 @@ def bar_chart():
 
     st.write('You selected:', option)
 
-    df7  =  baseball[:] [ baseball.년도==option2 ]
+    df7  =  baseball[:] [baseball.년도==option2]
     x = df7.팀
     y = df7.승률
     
@@ -87,7 +88,9 @@ def bar_chart():
     plt.title( "year korea baseball winrate data", position=(0.5,1.1))
     st.pyplot(fig)
     st.dataframe(df7)
-
+    
+st.set_page_config(layout="centered")  
+    
 with st.form(key ='Form1'):
     with st.sidebar:
         
