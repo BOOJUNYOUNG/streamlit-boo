@@ -3,15 +3,14 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-#money = pd.read_csv("money_data7.csv")
-
-#st.sidebar.success("Select a demo above.")
 
 def  plotting_demo():
+    
     uploaded_file = st.file_uploader("Choose a file")
 
     money=pd.read_csv(uploaded_file)
-    #money = pd.read_csv("money_data7.csv")
+   # money = pd.read_csv("money_data7.csv")
+
     option = st.selectbox(
         'How would you like to choice year ?',
         ('2020', '2021', '2022'))
@@ -47,12 +46,13 @@ def  plotting_demo():
 
     st.pyplot(fig)
     st.dataframe(money)
-    
+       
+
 def bar_chart():
-   
+
     url = "https://sports.news.naver.com/kbaseball/record/index?category=kbo&year="
 
-    years = ['2015', '2016','2017', '2018', '2019', '2020', '2021', '2022']
+    years = ['2015', '2016','2017', '2018', '2019', '2020', '2021', '2022' ]
 
     df = pd.DataFrame([]) 
 
@@ -73,7 +73,7 @@ def bar_chart():
 
     st.write('You selected:', option)
 
-    df7  =  baseball[:] [baseball.년도==option2]
+    df7  =  baseball[:] [ baseball.년도==option2 ]
     x = df7.팀
     y = df7.승률
     
@@ -88,21 +88,21 @@ def bar_chart():
     plt.title( "year korea baseball winrate data", position=(0.5,1.1))
     st.pyplot(fig)
     st.dataframe(df7)
-    
-st.set_page_config(layout="centered")  
-    
+
+st.set_page_config(layout="centered")        
+
 with st.form(key ='Form1'):
     with st.sidebar:
         
-        select_language = st.sidebar.radio('What do you want ?', ('line graph', 'bar graph', 'pie graph', 'histogram graph','corr graph','word cloud','box graph' ))
+        select_language = st.sidebar.radio('What do you want ?', ('line', 'bar', 'pie'))
         
         
-if select_language =='line graph':        
+if select_language =='line':           
     try:
-         plotting_demo()  
+          plotting_demo()  
     except:      
-          pass     
-        
+          pass
+
         
 elif select_language =='bar':
     bar_chart()
