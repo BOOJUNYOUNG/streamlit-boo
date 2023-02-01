@@ -63,7 +63,7 @@ def bar_chart():
         
     baseball = df    
 
-    baseball.팀.replace({'두산':'Doosan','삼성':'Samsung','키움':'Kiwoom','한화': 'Hanwha','롯데':'Lotte','넥센':'Kiwoom'}, inplace=True)
+    
     
     option = st.selectbox(
         'How would you like to choice year ?',
