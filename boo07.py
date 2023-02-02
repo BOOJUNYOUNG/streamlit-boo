@@ -53,60 +53,58 @@ def  plotting_demo():
        
         
 
+
+<수정 코드>
+
 def bar_chart():
 
-    url = "https://sports.news.naver.com/kbaseball/record/index?category=kbo&year="
+    url = " https://sports.news.naver.com/kbaseball/record/index?category=kbo&year= "
 
     years = ['2015', '2016','2017', '2018', '2019', '2020', '2021', '2022' ]
 
-    df = pd.DataFrame([]) 
+    baseball = pd.DataFrame([]) 
 
-    for    i    in     years: 
-        df1 = pd.read_html( url + i  )[0]
+    for i in years: 
+        df1 = pd.read_html(url+i)[0]
         df1['년도'] =  i 
-        df = pd.concat([df, df1], axis=0)
+        baseball = pd.concat([baseball, df1], axis=0)
         
-    baseball = df    
-
-    baseball.팀.replace({'두산':'Doosan','삼성':'Samsung','한화': 'Hanwha','롯데':'Lotte','넥센':'Nexen','키움':'Kiwoom'}, inplace=True)
+      baseball.팀.replace({'두산':'Doosan','삼성':'Samsung','한화': 'Hanwha','롯데':'Lotte','넥센':'Nexen','키움':'Kiwoom'}, inplace=True)
     
     option = st.selectbox(
         'How would you like to choice year ?',
         ('2015', '2016','2017', '2018', '2019', '2020', '2021', '2022'))
 
-    option2 = option
-
     st.write('You selected:', option)
 
-    df7  =  baseball[:] [ baseball.년도==option2 ]
-    x = df7.팀
-    y = df7.승률
+    baseball_graph = baseball[baseball.년도==option]
+    
+    global bb
+    bb = baseball_graph
+    
+    x = baseball_graph.팀
+    y = baseball_graph.승률
     
     fig, ax = plt.subplots(figsize=(12,8))
 
     colors = ['C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7' ,'C8', 'C9', 'C10' ]
-    plt.bar(  x,  y,  color= colors ) 
+    plt.bar(x, y, color= colors ) 
 
-    for   num ,   v    in   enumerate( y ):
-        plt.text (  num -0.4  ,   v + 0.01 ,  v   )
+    for i, v in enumerate( y ):
+        plt.text(i-0.4, v+0.01, v)
 
     plt.title( "year korea baseball winrate data", position=(0.5,1.1))
-    st.pyplot(fig)
-    st.dataframe(df7)
+    st.pyplot(fig)    
 
-#st.set_page_config(layout="centered")        
-
-with st.form(key ='Form1'):
-    with st.sidebar:
-        
-        select_language = st.sidebar.radio('데이터 분석 결과', ('금리와 집값 빠르게 파악하기', '야구 순위와 승률 빠르게 파악하기', '다른 데이터 분석'))
-        
-if select_language =='금리와 집값 빠르게 파악하기':           
-    try:
-          plotting_demo()  
-    except:      
-          pass
-
+ 
 
 elif select_language =='야구 순위와 승률 빠르게 파악하기':
-    bar_chart()
+    tab1, tab2 = st.tabs(["📈 Chart", "🗃 Data"])
+
+    with tab1:
+        tab1.subheader("A tab with a chart")
+        bar_chart()
+        
+    with tab2:
+        tab2.subheader("A tab with the data")
+        st.dataframe(bb)
