@@ -54,18 +54,18 @@ def  plotting_demo():
 
 def bar_chart():
 
-    url = " https://sports.news.naver.com/kbaseball/record/index?category=kbo&year= "
+    url = "https://sports.news.naver.com/kbaseball/record/index?category=kbo&year="
 
     years = ['2015', '2016','2017', '2018', '2019', '2020', '2021', '2022' ]
 
-    baseball = pd.DataFrame([]) 
+    df = pd.DataFrame([]) 
 
-    for i in years: 
-        df1 = pd.read_html(url+i)[0]
+    for    i    in     years: 
+        df1 = pd.read_html( url + i  )[0]
         df1['년도'] =  i 
-        baseball = pd.concat([baseball, df1], axis=0)
+        df = pd.concat([df, df1], axis=0)
         
-  
+    baseball = df    
 
     baseball.팀.replace({'두산':'Doosan','삼성':'Samsung','한화': 'Hanwha','롯데':'Lotte','넥센':'Nexen','키움':'Kiwoom'}, inplace=True)
     
@@ -73,17 +73,16 @@ def bar_chart():
         'How would you like to choice year ?',
         ('2015', '2016','2017', '2018', '2019', '2020', '2021', '2022'))
 
-    
+    option2 = option
 
     st.write('You selected:', option)
 
-    baseball_graph = baseball[baseball.년도==option]
+    df7  =  baseball[:] [ baseball.년도==option2 ]
+    x = df7.팀
+    y = df7.승률
     
     global bb
-    bb = baseball_graph
-    
-    x = baseball_graph.팀
-    y = baseball_graph.승률
+    bb = df7
     
     fig, ax = plt.subplots(figsize=(12,8))
 
@@ -95,7 +94,7 @@ def bar_chart():
 
     plt.title( "year korea baseball winrate data", position=(0.5,1.1))
     st.pyplot(fig)
-    #st.dataframe(df7)
+    st.dataframe(df7)
 
 #st.set_page_config(layout="centered")        
 
@@ -119,11 +118,11 @@ if select_language =='금리와 집값 빠르게 파악하기':
         
 elif select_language =='야구 순위와 승률 빠르게 파악하기':
     tab1, tab2 = st.tabs(["📈 Chart", "🗃 Data"])
-
+   
     with tab1:
         tab1.subheader("A tab with a chart")
         bar_chart()
         
     with tab2:
         tab2.subheader("A tab with the data")
-        st.dataframe(bb)
+        st.dataframe(bb)    
