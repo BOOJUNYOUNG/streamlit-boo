@@ -21,7 +21,7 @@ def  plotting_demo():
 
     money = money[:] [money['A_YEAR']== option2]
     
-    global  aa          #전역변수
+    global  aa          
     
     aa = money
 
@@ -59,14 +59,13 @@ def bar_chart():
 
     years = ['2015', '2016','2017', '2018', '2019', '2020', '2021', '2022' ]
 
-    df = pd.DataFrame([]) 
+    baseball = pd.DataFrame([]) 
 
     for    i    in     years: 
         df1 = pd.read_html( url + i  )[0]
         df1['년도'] =  i 
-        df = pd.concat([df, df1], axis=0)
+        baseball = pd.concat([df, df1], axis=0)
         
-    baseball = df    
 
     baseball.팀.replace({'두산':'Dusan','삼성':'SS','키움':'KU','한화': 'HH','롯데':'Lotte','넥센':'NecSen'}, inplace=True)
     
@@ -74,11 +73,10 @@ def bar_chart():
         'How would you like to choice year ?',
         ('2015', '2016','2017', '2018', '2019', '2020', '2021', '2022'))
 
-    option2 = option
 
     st.write('You selected:', option)
 
-    baseball_record  =  baseball[:] [ baseball.년도==option ]
+    baseball_record  =  baseball[ baseball.년도==option ]
  
     global bb
     bb = baseball_record
