@@ -54,7 +54,6 @@ def  plotting_demo():
         
 
 
-<수정 코드>
 
 def bar_chart():
 
