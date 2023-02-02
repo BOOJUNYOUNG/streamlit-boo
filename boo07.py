@@ -19,12 +19,8 @@ def  plotting_demo():
 
     st.write('You selected:', option)
 
-    #money = money[:] [money['A_YEAR']== option2]
-    global aa
-    
-    
-    aa = money
-    
+    money = money[:] [money['A_YEAR']== option2]
+
     fig, ax = plt.subplots(2,2, figsize=(12,8))
 
     plt.subplot(221)
@@ -49,7 +45,7 @@ def  plotting_demo():
     plt.title('House Price')
 
     st.pyplot(fig)
-    #st.dataframe(money)
+    st.dataframe(money)
        
 
 def bar_chart():
@@ -100,18 +96,12 @@ with st.form(key ='Form1'):
         
         select_language = st.sidebar.radio('데이터 분석 결과', ('금리와 집값 빠르게 파악하기', '야구 순위와 승률 빠르게 파악하기', '다른 데이터 분석'))
         
-if select_language =='금리와 집값 빠르게 파악하기':
-    tab1, tab2 = st.tabs(["📈 Chart", "🗃 Data"])
-   
-    with tab1:
-        tab1.subheader("A tab with a chart")
-        plotting_demo()
-        
-    with tab2:
-        tab2.subheader("A tab with the data")
-        st.dataframe(aa)
-  
-  
+if select_language =='금리와 집값 빠르게 파악하기':           
+    try:
+          plotting_demo()  
+    except:      
+          pass
+
         
 elif select_language =='야구 순위와 승률 빠르게 파악하기':
     bar_chart()
