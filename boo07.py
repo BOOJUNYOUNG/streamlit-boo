@@ -1,8 +1,3 @@
-#▩ 매일 조금씩 월세 입금 사이트 개선6
-
- #오늘 주요 내용:  그래프와  테이블을 텝으로 분리
-
-
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -130,5 +125,4 @@ elif select_language =='야구 순위와 승률 빠르게 파악하기':
         
     with tab2:
         tab2.subheader("A tab with the data")
-        st.dataframe(bb)    
-
+        st.dataframe(bb)
